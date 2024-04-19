@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -12,6 +14,9 @@ class SearchScreen extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 16.0),
         child: Center(
             child: TextField(
+              onChanged: (value){
+                log(value);
+              },
               decoration: InputDecoration(
                 label: const Text('Search'),
                 contentPadding: const EdgeInsets.symmetric(vertical: 24.0,horizontal: 16.0),

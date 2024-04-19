@@ -1,7 +1,11 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:weather_app/network/weather_service.dart';
 import 'package:weather_app/screens/home_screen.dart';
 
 void main() {
+
+  WeatherService( dio:Dio()).getWeatherInfo();
   runApp(const WeatherApp());
 }
 

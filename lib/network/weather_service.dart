@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:weather_app/local.properties.dart';
 import 'package:weather_app/models/weather_model.dart';
 
@@ -7,14 +8,12 @@ class WeatherService {
 
   final Dio dio;
 
-  Future<WeatherModel> getWeatherInfo() async {
+  static const baseUrl='https://api.weatherapi.com/v1';
+  Future<WeatherModel> getWeatherInfo(String cityName) async {
     try {
       final response = await dio.get(
-          'https://api.weatherapi.com/v1/forecast.json?q=cairo&days=1&key=$api_key');
-      Map<String, dynamic> json = response.data;
-      final weatherModel= WeatherModel.fromJSon(json);
-      print('$weatherModel');
-      return weatherModel;
+          '$baseUrl/forecast.json?days=1&key=$api_key');
+      return WeatherModel.fromJSon(response.data);
     } catch (e) {
       throw Exception();
     }

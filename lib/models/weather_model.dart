@@ -23,12 +23,10 @@ class WeatherModel {
   factory WeatherModel.fromJSon(Map<String, dynamic> json) {
     String city = json['location']['name'];
     String time = json['location']['localtime'];
-    List<dynamic> forecastDay = json['forecast']['forecastday'];
-    Map<String, dynamic> currentDay = forecastDay[0];
-    Map<String, dynamic> day = currentDay['day'];
-    Double maxTemp = day['maxtemp_c'];
-    Double minTemp = day['mintemp_c'];
-    Double avgTemp = day['avgtemp_c'];
+    Map<String, dynamic> day = json['forecast']['forecastday'][0]['day'];
+    double maxTemp = day['maxtemp_c'];
+    double minTemp = day['mintemp_c'];
+    double avgTemp = day['avgtemp_c'];
     String weatherCondition = day['condition']['text'];
     String image = day['condition']['icon'];
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:weather_app/screens/search_screen.dart';
 import 'package:weather_app/widgets/no_weather_body.dart';
+import 'package:weather_app/widgets/weather_info_body.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -22,7 +23,7 @@ class HomeScreen extends StatelessWidget {
         ],
         title: const Text('Weather App'),
       ),
-      body: const NoWeatherBody(),
+      body: weatherModel == null ? const NoWeatherBody() : const WeatherInfoBody()
     );
   }
 }

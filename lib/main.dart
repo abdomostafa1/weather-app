@@ -5,7 +5,6 @@ import 'package:weather_app/screens/home_screen.dart';
 
 void main() {
 
-  WeatherService( dio:Dio()).getWeatherInfo('cairo');
   runApp(const WeatherApp());
 }
 

@@ -12,10 +12,10 @@ class WeatherService {
 
   static const baseUrl = 'https://api.weatherapi.com/v1';
 
-  Future<WeatherModel> getWeatherInfo(String cityName) async {
+  Future<WeatherModel> getWeatherInfo({required String cityName}) async {
     try {
       final response =
-          await dio.get('$baseUrl/forecast.json?days=1&key=$api_key');
+          await dio.get('$baseUrl/forecast.json?days=1&q=$cityName&key=$api_key');
       return WeatherModel.fromJSon(response.data);
     } on DioException catch (e) {
       final errorMessage = e.response?.data['error']['message'] ??

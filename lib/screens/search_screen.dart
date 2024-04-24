@@ -1,8 +1,14 @@
 import 'dart:developer';
 
+import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:weather_app/models/weather_model.dart';
+import 'package:weather_app/network/weather_service.dart';
+
+
+WeatherModel? weatherModel;
 
 class SearchScreen extends StatelessWidget {
    const SearchScreen({Key? key}) : super(key: key);
@@ -11,11 +17,11 @@ class SearchScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Scaffold(
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16.0),
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: Center(
             child: TextField(
-              onChanged: (value){
-                log(value);
+              onSubmitted: (value) async{
+                Navigator.pop(context);
               },
               decoration: InputDecoration(
                 label: const Text('Search'),

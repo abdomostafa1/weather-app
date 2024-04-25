@@ -4,8 +4,11 @@ import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_app/models/weather_model.dart';
 import 'package:weather_app/network/weather_service.dart';
+
+import '../cubits/weather_cubit/weather_cubit.dart';
 
 
 WeatherModel? weatherModel;
@@ -21,6 +24,8 @@ class SearchScreen extends StatelessWidget {
         child: Center(
             child: TextField(
               onSubmitted: (value) async{
+                final weatherCubit=BlocProvider.of<WeatherCubit>(context);
+                weatherCubit.getWeatherInfo(cityName: value);
                 Navigator.pop(context);
               },
               decoration: InputDecoration(

@@ -14,7 +14,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.lightBlue,
+          elevation: 2.0,
           actions: [
             IconButton(
               onPressed: () {
@@ -34,7 +34,7 @@ class HomeScreen extends StatelessWidget {
           else if (state is WeatherInfoLoadedState)
             return  WeatherInfoBody(weatherModel: state.weatherModel);
           else
-            return Center(
+            return const Center(
               child: Text('an error occurred try again later'),
             );
         }

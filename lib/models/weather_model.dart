@@ -13,7 +13,7 @@ class WeatherModel {
       required this.weatherCondition});
 
   final String city;
-  final String time;
+  final DateTime time;
   final String image;
   final String avgTemp;
   final String maxTemp;
@@ -22,7 +22,7 @@ class WeatherModel {
 
   factory WeatherModel.fromJSon(Map<String, dynamic> json) {
     String city = json['location']['name'];
-    String time = json['location']['localtime'];
+    DateTime time = DateTime.parse(json['current']['last_updated']);
     Map<String, dynamic> day = json['forecast']['forecastday'][0]['day'];
     double maxTemp = day['maxtemp_c'];
     double minTemp = day['mintemp_c'];
@@ -32,7 +32,7 @@ class WeatherModel {
 
     print(maxTemp);
     return WeatherModel(
-        city: city,
+         city: city,
         time: time,
         image: image,
         avgTemp: "$avgTemp",
